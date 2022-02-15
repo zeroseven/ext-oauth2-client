@@ -4,7 +4,6 @@ namespace Waldhacker\Oauth2Client\EventListener;
 
 use TYPO3\CMS\Core\Http\ResponseFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\FrontendLogin\Event\BeforeRedirectEvent;
 use Waldhacker\Oauth2Client\Service\SessionService;
