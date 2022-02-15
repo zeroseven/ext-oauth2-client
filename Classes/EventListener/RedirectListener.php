@@ -25,6 +25,5 @@ class RedirectListener
         $response = $responseFactory->createResponse(303)->withAddedHeader('location', $return_url);
 
         throw new StopActionException('redirectToUri', 1476045828, null, $response);
-        //HttpUtility::redirect($return_url);
     }
 }
