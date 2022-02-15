@@ -37,7 +37,7 @@ class LoginService extends AbstractService
     private UserRepository $userRepository;
     private ?ResourceOwnerInterface $user = null;
     private Oauth2ProviderManager $oauth2ProviderManager;
-
+    private SessionService $sessionService;
 
     public function __construct(
         Oauth2Service $oauth2Service,
@@ -49,6 +49,8 @@ class LoginService extends AbstractService
         $this->uriBuilder = $uriBuilder;
         $this->userRepository = $userRepository;
         $this->oauth2ProviderManager = $oauth2ProviderManager;
+
+        $this->sessionService = GeneralUtility::makeInstance(SessionService::class);
     }
 
     public function initAuth(string $subType, array $loginData, array $authInfo): void
@@ -102,7 +104,6 @@ class LoginService extends AbstractService
             $callbackUrl = (string)$this->uriBuilder->buildUriFromRoute('login', $callbackParams, UriBuilder::ABSOLUTE_URL);
         }
 
-
         if (empty(GeneralUtility::_GET('code'))) {
             $authUrl = $this->oauth2Service->getAuthorizationUrl($providerId, $callbackUrl);
             HttpUtility::redirect($authUrl);
@@ -139,6 +140,8 @@ class LoginService extends AbstractService
             GeneralUtility::_GP('code')
         ) {
             if ($this->user instanceof ResourceOwnerInterface) {
+                $return_url = $this->sessionService->hasDataByKey('oauth_return_url') ? $this->sessionService->getDataByKey('oauth_return_url') : '/home';
+                HttpUtility::redirect($return_url);
                 return 200;
             }
             return -100;
