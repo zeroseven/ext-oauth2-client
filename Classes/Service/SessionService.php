@@ -18,7 +18,7 @@ class SessionService implements SingletonInterface
     {
         if (session_id() === '') {
             session_start();
-            $this->sessionKey = 'tx_zwi_keycloak';
+            $this->sessionKey = 'tx_stb_azuread';
         }
     }
 
