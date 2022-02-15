@@ -141,8 +141,6 @@ class LoginService extends AbstractService
             GeneralUtility::_GP('code')
         ) {
             if ($this->user instanceof ResourceOwnerInterface) {
-                $return_url = $this->sessionService->hasDataByKey('oauth_return_url') ? $this->sessionService->getDataByKey('oauth_return_url') : '/home';
-                HttpUtility::redirect($return_url);
                 return 200;
             }
             return -100;
