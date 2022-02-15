@@ -57,7 +57,11 @@ class LoginService extends AbstractService
         $this->loginData = $loginData;
         $this->authInfo = $authInfo;
         $this->userRepository->setLoginType($this->authInfo['loginType']);
-        $this->sessionService->setDataByKey('oauth_return_url', $this->authInfo['refInfo']['path']);
+
+        $refPath = $this->authInfo['refInfo']['path'] !== '/' ? $this->authInfo['refInfo']['path'] : null;
+        if ($refPath) {
+            $this->sessionService->setDataByKey('oauth_return_url', $refPath);
+        }
     }
 
     public function getUser(): ?array
