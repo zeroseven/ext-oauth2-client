@@ -23,7 +23,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Service\AbstractService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\HttpUtility;
 use Waldhacker\Oauth2Client\Events\UserLookupEvent;
 use Waldhacker\Oauth2Client\Repository\UserRepository;
 
