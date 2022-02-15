@@ -21,6 +21,7 @@ namespace Waldhacker\Oauth2Client\Service;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
+use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Core\Service\AbstractService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Waldhacker\Oauth2Client\Events\UserLookupEvent;
